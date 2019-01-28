@@ -82,7 +82,7 @@ public class GrilleTest {
 			for (int c = 0; c < gr.nbCol(); c++) {
 				assertNotSame(gr.getCase(l, c), gr2.getCase(l, c));
 			}
-		}
+		}https://stl.algo-prog.info/3703169/motcroise
 
 		testContenu(gr2, 0, 0, ' ');
 		testContenu(gr2, 10, 0, ' ');
