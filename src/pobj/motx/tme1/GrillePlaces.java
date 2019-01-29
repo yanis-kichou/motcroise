@@ -9,6 +9,11 @@ public class GrillePlaces {
 	private List<Emplacement> places;
 	private int horizontal;
 
+	/**
+	 * construire une grillePlaces remplie
+	 * recupere les mot se situant dans la grille (Horizental et vertical)
+	 * @param gr la grille remplie de mot 
+	 */
 	public GrillePlaces(Grille gr) {
 
 		this.grille = gr;
@@ -22,10 +27,19 @@ public class GrillePlaces {
 		}
 	}
 
+	/**
+	 * recuperation de tout les mots constituant la grille
+	 * @return la liste des emplacement des mots 
+	 */
 	public List<Emplacement> getPlaces() {
 		return places;
 	}
 
+	/**
+	 * recupere une ligne de la grille
+	 * @param lig qui indique la ligne a recupere
+	 * @return la liste des cases constituant la ligne lig de la grille 
+	 */
 	private List<Case> getLig(int lig) {
 
 		List<Case> nombreMot = new ArrayList<>();
@@ -35,7 +49,12 @@ public class GrillePlaces {
 
 		return nombreMot;
 	}
-
+	
+	/**
+	 * recupere les cases d'un colonne donner 
+	 * @param col qui indique l'indice de la colonne a recupere
+	 * @return la liste des cases constituant la colonne
+	 */
 	private List<Case> getCol(int col) {
 		List<Case> nombreMot = new ArrayList<>();
 		for (int i = 0; i < grille.nbLig(); i++)
@@ -44,6 +63,10 @@ public class GrillePlaces {
 		return nombreMot;
 	}
 
+	/**
+	 * recherche des mots se situant sur une liste de cases
+	 * @param cases liste de cases 
+	 */
 	private void cherchePlaces(List<Case> cases) {
 		Emplacement e = new Emplacement();
 
@@ -61,10 +84,32 @@ public class GrillePlaces {
 
 	}
 
+	/**
+	 * recupere le nombre de mots horizentaux
+	 * @return le nombre de mot Horizentaux
+	 */
 	public int getNbHorizontal() {
 		return horizontal;
 	}
+	
+	
+	public GrillePlaces fixer(int m, String soluce) {
+		GrillePlaces copy=new GrillePlaces(this.grille.copy());
+		Emplacement e=copy.getPlaces().get(m);
+		for (int i = 0; i<e.size(); i++) {
+			e.getCase(i).setChar(soluce.charAt(i));
+		}
+		for (int i = 0; i < e.size(); i++) {
+			int lig=e.getCase(i).getLig();
+			int col= e.getCase(i).getCol();
+			copy.grille.getCase(lig,col).setChar(e.getCase(i).getChar());
+		}
+		return copy;
+		
+	}
 
+	
+	@Override
 	public String toString() {
 		String s = "";
 		for (Emplacement e : places) {
