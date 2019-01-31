@@ -37,7 +37,7 @@ public class GrillePotentielTest3 {
 		int[] expected = { 245, 302, 1 };
 		GrillePotentielTest.testNombrePot(gp2, expected);
 
-		// System.out.println(gp2.getGrillePlaces().getGrille());
+		System.out.println(gp2.getGrillePlaces().getGrille());
 
 		System.out.println("Succès test GrillePotentiel : make easy 2.");
 	}

@@ -26,14 +26,12 @@ public class GrillePotentielTest4 {
 		assertEquals(5, gr.nbCol());
 		assertEquals(5, gr.nbLig());
 
-		// System.out.println(gr);
+		System.out.println(gr);
 
 		GrillePlaces grille = new GrillePlaces(gr);
-
 		GrillePotentiel gp = new GrillePotentiel(grille, gut);
 
 		assertTrue(!gp.isDead());
-
 		
 
 		int[][] expected = { {0,2,2,0},
@@ -69,7 +67,7 @@ public class GrillePotentielTest4 {
 		assertEquals(5, gr.nbCol());
 		assertEquals(5, gr.nbLig());
 
-		// System.out.println(gr);
+		System.out.println(gr);
 
 		GrillePlaces grille = new GrillePlaces(gr);
 
@@ -77,9 +75,9 @@ public class GrillePotentielTest4 {
 
 		assertTrue(!gp.isDead());
 
-//		for (IContrainte c: gp.getContraintes()) {
-//			System.out.println(c+",");
-//		}
+	for (IContrainte c: gp.getContraintes()) {
+			System.out.println(c+",");
+		}
 		int[][] expected = { {0,0,3,0},
 				{0,2,4,0},
 				{0,4,5,0},

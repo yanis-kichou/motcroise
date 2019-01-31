@@ -91,7 +91,27 @@ public class Dictionnaire {
 		return cpt;
 	}
 	
+	
+	public int filtreParLettre( int i, EnsembleLettre lp) {
+		List<String> cible = new ArrayList<>();
+		int cpt = 0;
+		for (String mot : mots) {
+			if (lp.contains(mot.charAt(i)))
+				cible.add(mot);
+			else
+				cpt++;
+		}
+		mots = cible;
+		return cpt;
+	}
 
+	public EnsembleLettre getLettres(int i) {
+		EnsembleLettre cible=new EnsembleLettre();
+		for (String s:this.mots) {
+			cible.add(s.charAt(i));
+		}
+		return cible;
+	}
 	@Override
 	public String toString() {
 		if (size() == 1) {

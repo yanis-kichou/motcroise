@@ -17,11 +17,33 @@ public class CroixContrainte implements IContrainte{
 	@Override
 	public int reduce(GrillePotentiel grille) {
 		
-		EnsembleLettre l1=new EnsembleLettre();
-		EnsembleLettre l2=new EnsembleLettre();
+		EnsembleLettre l1=grille.getMotsPot().get(m1).getLettres(c1);
+		EnsembleLettre l2=grille.getMotsPot().get(m2).getLettres(c2);
 		
+		EnsembleLettre s=l1.intersection(l2);
+		int cpt1=0,cpt2=0;
+		if(l1.size()>s.size()) {
+			cpt1=grille.getMotsPot().get(m1).filtreParLettre(c1,s);
+		}
 		
-		return 0;
+		if(l2.size()>s.size()) {
+			cpt2=grille.getMotsPot().get(m2).filtreParLettre(c2,s);
+		}
+		
+		return cpt1+cpt2;
 	}
-
+	@Override
+	public String toString() {
+		return "(("+m1+" , "+c1+") , ("+m2+" , "+c2+") ) ";
+	}
+	
+	
+	public boolean equals(Object other) {
+		if(this==other)
+			return true;
+		if(!(other instanceof CroixContrainte))
+			return false;
+		CroixContrainte o=(CroixContrainte)other;
+		return this.m1==o.m1 && this.m2==o.m2 && this.c1==o.c1 && this.c2==o.c2;
+	}
 }

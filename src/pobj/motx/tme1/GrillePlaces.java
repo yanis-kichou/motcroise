@@ -121,4 +121,10 @@ public class GrillePlaces {
 		}
 		return s;
 	}
+
+	public Grille getGrille() {
+		// TODO Auto-generated method stub
+		return grille;
+	}
+
 }
