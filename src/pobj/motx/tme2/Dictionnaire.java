@@ -78,11 +78,20 @@ public class Dictionnaire {
 		return cpt;
 	}
 
+	/**
+	 * retire les mots qui n'ont pas au i_eme caractere le charactere c
+	 * 
+	 * @param c
+	 *            le caractere de filtrage voulu
+	 * @param i
+	 *            l'indice du caractere a comparer avec c
+	 * @return le nombre de mot retirer du dictionnaire
+	 */
 	public int filtreParLettre(char c, int i) {
 		List<String> cible = new ArrayList<>();
 		int cpt = 0;
 		for (String mot : mots) {
-			if (mot.charAt(i)==c)
+			if (mot.charAt(i) == c)
 				cible.add(mot);
 			else
 				cpt++;
@@ -90,9 +99,19 @@ public class Dictionnaire {
 		mots = cible;
 		return cpt;
 	}
-	
-	
-	public int filtreParLettre( int i, EnsembleLettre lp) {
+
+	/**
+	 * retire les mots dans la i_eme caractere des mots du dictionnaire qui ne sont
+	 * pas dans l'ensemble lp
+	 * 
+	 * @param i
+	 *            indice du caractere a verifier
+	 * @param lp
+	 *            ensemble des lettres possible pour les mots du dictionnaire a
+	 *            l'indice i
+	 * @return le nombre de mots filtrer
+	 */
+	public int filtreParLettre(int i, EnsembleLettre lp) {
 		List<String> cible = new ArrayList<>();
 		int cpt = 0;
 		for (String mot : mots) {
@@ -105,13 +124,24 @@ public class Dictionnaire {
 		return cpt;
 	}
 
+	/**
+	 * REtour l'esemble des lettres figurant dans le i_eme caractere des mots du
+	 * dictionnaire
+	 * 
+	 * @param i
+	 *            l'indice du caractere
+	 * @return un ensebleLettre avec toutes les lettres figurant dans la i_eme place
+	 *         des mots du dictionnaire
+	 */
 	public EnsembleLettre getLettres(int i) {
-		EnsembleLettre cible=new EnsembleLettre();
-		for (String s:this.mots) {
-			cible.add(s.charAt(i));
+		EnsembleLettre cible = new EnsembleLettre();
+		for (String s : this.mots) {
+			if(!cible.contains(s.charAt(i)))
+				cible.add(s.charAt(i));
 		}
 		return cible;
 	}
+
 	@Override
 	public String toString() {
 		if (size() == 1) {
@@ -121,6 +151,13 @@ public class Dictionnaire {
 		}
 	}
 
+	/**
+	 * fonction qui charge un dictionnaire a trevers un chemain passer ne paramettre
+	 * 
+	 * @param path
+	 *            le chemin absulo du fichier ou figure le dictionnaire a charger
+	 * @return une nouvelle instance de Dictionnaire
+	 */
 	public static Dictionnaire loadDictionnaire(String path) {
 		Dictionnaire d = new Dictionnaire();
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {

@@ -1,6 +1,5 @@
 package pobj.motx.tme3.test;
 
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -9,7 +8,7 @@ import pobj.motx.tme1.GrilleLoader;
 import pobj.motx.tme1.GrillePlaces;
 import pobj.motx.tme2.Dictionnaire;
 import pobj.motx.tme2.GrillePotentiel;
-import pobj.motx.tme3.adapt.MotX;
+import pobj.motx.tme3.csp.MotX;
 import pobj.motx.tme3.csp.CSPSolverCorrige;
 import pobj.motx.tme3.csp.ICSP;
 

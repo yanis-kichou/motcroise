@@ -92,7 +92,12 @@ public class GrillePlaces {
 		return horizontal;
 	}
 	
-	
+	/**
+	 * fonction qui permet de fixer une solution a emplacement donnée
+	 * @param m l'indice de l'emplacement ou fixer la solution
+	 * @param soluce la solution a fixer
+	 * @return grillePlace avec la solution fixer
+	 */
 	public GrillePlaces fixer(int m, String soluce) {
 		GrillePlaces copy=new GrillePlaces(this.grille.copy());
 		Emplacement e=copy.getPlaces().get(m);
@@ -108,7 +113,6 @@ public class GrillePlaces {
 		
 	}
 
-	
 	@Override
 	public String toString() {
 		String s = "";
@@ -122,6 +126,10 @@ public class GrillePlaces {
 		return s;
 	}
 
+	/**
+	 * getter qui permet de recupere la grille de la place 
+	 * @return la grille de la classe
+	 */
 	public Grille getGrille() {
 		// TODO Auto-generated method stub
 		return grille;
