@@ -40,6 +40,7 @@ public class GrillePotentiel {
 		for (IContrainte c:contraintes) {
 			((CroixContrainte)c).reduce(this);
 		}
+		//Reduce OK
 
 	}
 
