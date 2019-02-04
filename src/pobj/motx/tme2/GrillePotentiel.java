@@ -16,6 +16,7 @@ public class GrillePotentiel {
 		this.dico = dicoComplet;
 		Dictionnaire copy;
 		System.out.println(gr.getPlaces());
+		contraintes=new ArrayList<>();
 		motsPot = new ArrayList<>();
 		for (Emplacement e : grille.getPlaces()) {
 			copy = dicoComplet.copy();
@@ -28,15 +29,16 @@ public class GrillePotentiel {
 			}
 			motsPot.add(copy);
 		}
-		List<Emplacement> h = getHorizental(), v = getVertical();
+		int h = grille.getNbHorizontal();
 
-		for (int i = 0; i < h.size(); i++) {
+		for (int i = 0; i < h; i++) {
 
-			for (int j = 0; j < v.size(); j++) {
-				System.out.println("i=" + i + " j=" + j);
-
-				chercherContrainte(h.get(i), i, v.get(j), j);
+			for (int j = h; j < grille.getPlaces().size(); j++) {
+				chercherContrainte(grille.getPlaces().get(i), i, grille.getPlaces().get(j), j);
 			}
+		}
+		for (IContrainte c:contraintes) {
+			((CroixContrainte)c).reduce(this);
 		}
 
 	}
@@ -54,35 +56,14 @@ public class GrillePotentiel {
 		return new GrillePotentiel(grille.fixer(m, soluce), dico);
 	}
 
-	private List<Emplacement> getHorizental() {
-		List<Emplacement> horizental = new ArrayList<>();
-		for (int i = 0; i < grille.getNbHorizontal(); i++) {
-			horizental.add(grille.getPlaces().get(i));
-		}
-
-		return horizental;
-	}
-
-	private List<Emplacement> getVertical() {
-		List<Emplacement> vertical = new ArrayList<>();
-		for (int i = grille.getNbHorizontal(); i < grille.getPlaces().size(); i++) {
-			vertical.add(grille.getPlaces().get(i));
-		}
-
-		return vertical;
-	}
-
 	private void chercherContrainte(Emplacement h, int m1, Emplacement v, int m2) {
-
-		contraintes = new ArrayList<>();
-
 		for (int i = 0; i < h.size(); i++) {
 			for (int j = 0; j < v.size(); j++) {
 
-				if (h.getCase(i).getCol() == v.getCase(j).getCol() && h.getCase(i).getLig() == v.getCase(j).getLig()) {
+				if ((h.getCase(i).getCol() == v.getCase(j).getCol())
+						&& (h.getCase(i).getLig() == v.getCase(j).getLig())) {
 					if (h.getCase(i).isVide()) {
-						System.out.println("m1 " + m1 + " c1 " + i + " m2 " + m2 + " c2 " + j);
-						contraintes.add(new CroixContrainte(m1, i,m2, j));
+						contraintes.add(new CroixContrainte(m1, i, m2, j));
 					}
 				}
 			}
@@ -94,11 +75,6 @@ public class GrillePotentiel {
 	}
 
 	public List<IContrainte> getContraintes() {
-		// TODO Auto-generated method stub
-		System.out.println("[ ");
-		for (IContrainte c : contraintes)
-			System.out.println(((CroixContrainte) c).toString());
-		System.out.println(" ]");
 		return contraintes;
 	}
 

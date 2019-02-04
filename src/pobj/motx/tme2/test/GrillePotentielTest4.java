@@ -75,9 +75,7 @@ public class GrillePotentielTest4 {
 
 		assertTrue(!gp.isDead());
 
-	for (IContrainte c: gp.getContraintes()) {
-			System.out.println(c+",");
-		}
+	
 		int[][] expected = { {0,0,3,0},
 				{0,2,4,0},
 				{0,4,5,0},
