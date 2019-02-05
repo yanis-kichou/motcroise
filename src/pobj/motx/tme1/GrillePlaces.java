@@ -3,6 +3,8 @@ package pobj.motx.tme1;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
+
 public class GrillePlaces {
 
 	private Grille grille;

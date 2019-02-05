@@ -162,4 +162,16 @@ public class GrillePotentiel {
 		// TODO Auto-generated method stub
 		return grille;
 	}
+	
+	@Override
+	public String toString() {
+		String s="";
+		for(int i=0;i<grille.getGrille().nbLig();i++) {
+			for (int j = 0; j < grille.getGrille().nbCol(); j++) {
+				s+=grille.getGrille().getCase(i, j).getChar()+" \t";
+			}
+			s+="\n";
+		}
+		return s;
+	}
 }

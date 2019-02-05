@@ -46,4 +46,12 @@ public class Emplacement {
 	public int size() {
 		return lettres.size();
 	}
+	
+	public boolean hasCaseVide() {
+		for(Case c:lettres) {
+			if(c.isVide())
+				return true;
+		}
+		return false;
+	}
 }

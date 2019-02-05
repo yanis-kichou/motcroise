@@ -2,9 +2,10 @@ package pobj.motx.tme3.csp;
 
 public class CSPSolverCorrige {
 
+	private ICSP prob;
 	public ICSP solve(ICSP problem) {
-		// TODO Auto-generated method stub
-		return null;
+		this.prob=problem;
+		return new CSPSolver().solve(problem);
 	}
 
 }

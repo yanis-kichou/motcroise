@@ -172,4 +172,13 @@ public class Dictionnaire {
 		}
 		return d;
 	}
+	
+	
+	/**
+	 * recuperer les mots du dico
+	 * @return une liste de string comportant les mots du Dictoonnaire
+	 */
+	public List<String> getMotsDico(){
+		return this.mots;
+	}
 }
